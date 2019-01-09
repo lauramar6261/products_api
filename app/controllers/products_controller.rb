@@ -28,9 +28,6 @@ class ProductsController < ApplicationController
    end
   end
 
-  def new
-  end
-
   def edit
   end
 
@@ -41,6 +38,19 @@ class ProductsController < ApplicationController
   end
 
   def overdue
+    products = Product.overdue.map do |product|
+      {
+          name: product.name,
+          image: product.image,
+          upc: product.upc,
+          date: product.date,
+          notes: product.notes,
+          description: product.description,
+          brand: product.brand,
+          color: product.color
+      }
+    end
+    render status: :ok, json: products
   end
 
   def zomg
@@ -48,7 +58,7 @@ class ProductsController < ApplicationController
   end
 
   private
-  
+
   def product_params
      params.permit(:name, :image, :date, :notes, :description, :brand, :color, :upc)
   end
