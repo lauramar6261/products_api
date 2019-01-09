@@ -1,17 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  image: MyString
+  name: "Eye Liner"
+  image: "https"
   date: 2019-01-09
-  notes: 
-  brand: MyString
-  description: MyString
+  notes: "my notes"
+  brand: "Maybelline"
+  description: "test one"
+  upc: "2324234234234234"
 
 two:
-  name: MyString
-  image: MyString
+  name: "Mascara"
+  image: "tttps"
   date: 2019-01-09
-  notes: 
-  brand: MyString
-  description: MyString
+  notes: "my notes"
+  brand: "Maybelline"
+  description: "test two"
+  upc: "23234323424"
