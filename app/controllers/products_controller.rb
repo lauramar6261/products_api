@@ -22,4 +22,8 @@ class ProductsController < ApplicationController
 
   def overdue
   end
+
+  def zomg
+    render json: {message: "it works!"}, status: :ok
+  end
 end
