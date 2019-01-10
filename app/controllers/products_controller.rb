@@ -1,10 +1,9 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only: [:show, :update, :destroy]
   # GET /products/:id
   def show
-    product = Product.find_by(id: params[:id])
-
-    if product
-      render json: product.as_json(only: [:id, :upc, :name, :image, :date, :notes, :description, :color, :brand]), status: :ok
+    if @product
+      render json: @product.as_json(only: [:id, :upc, :name, :image, :date, :notes, :description, :color, :brand]), status: :ok
     else
       render json: {ok: false, message: 'product not found'}, status: :not_found
     end
@@ -40,9 +39,8 @@ class ProductsController < ApplicationController
 
   # PUT /products/:id
   def update
-    product = Product.find(params[:id])
-    if product.update!(product_params)
-      render json: product.as_json(only: [:id, :upc, :name, :image, :date, :notes, :description, :color, :brand]), status: :ok
+    if @product.update!(product_params)
+      render json: @product.as_json(only: [:id, :upc, :name, :image, :date, :notes, :description, :color, :brand]), status: :ok
     else
       render json: {ok: false, message: 'product not found'}, status: :not_found
     end
@@ -50,9 +48,8 @@ class ProductsController < ApplicationController
 
   # DELETE /products/:id
   def destroy
-    product = Product.find(params[:id])
-    if product.destroy!
-      render json: product.as_json(only: [:id]), status: :ok
+    if @product.destroy!
+      render json: @product.as_json(only: [:id]), status: :ok
     else
       render json: {ok: false, message: 'product not found'}, status: :not_found
     end
@@ -83,5 +80,12 @@ class ProductsController < ApplicationController
 
   def product_params
      params.permit(:name, :image, :date, :notes, :description, :brand, :color, :upc, :pao)
+  end
+
+  def set_product
+    @product = Product.find_by id: params[:id]
+    unless @product
+      render status: :not_found, json: { errors: { id: ["No such product #{params[:id]}"] } }
+    end
   end
 end
