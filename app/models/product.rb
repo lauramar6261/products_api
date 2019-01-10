@@ -3,5 +3,5 @@ class Product < ApplicationRecord
 
   def self.overdue
     self.where("date < ?", Date.today)
-  end
+  end  
 end

@@ -19,6 +19,10 @@ class ProductsController < ApplicationController
   end
 
   def create
+    # need to find out if the user doesn't input anything, will it be strings or nil? (I think string, if I set the state as strings from the beginning)
+    if product_params[:date] = "" && !product_params[:pao].nil? && product_params[:pao] != ""
+      product_params[:date] = Date.today + (30 * product_params[:pao].to_f)
+    end
     product = Product.new(product_params)
 
    if product.save
@@ -60,6 +64,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-     params.permit(:name, :image, :date, :notes, :description, :brand, :color, :upc)
+     params.permit(:name, :image, :date, :notes, :description, :brand, :color, :upc, :pao)
   end
 end
