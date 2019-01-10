@@ -14,16 +14,18 @@ class ProductsController < ApplicationController
     if products.nil?
       render json: {ok:false, message: 'not_found'}, status: :not_found
     else
-      render json: products.as_json(only: [:id, :upc, :name, :image, :date, :notes, :description, :color, :brand]), status: :ok
+      render json: products.as_json(only: [:id, :upc, :name, :image, :date, :notes, :description, :color, :brand, :pao]), status: :ok
     end
   end
 
   def create
-    # need to find out if the user doesn't input anything, will it be strings or nil? (I think string, if I set the state as strings from the beginning)
-    if product_params[:date] = "" && !product_params[:pao].nil? && product_params[:pao] != ""
-      product_params[:date] = Date.today + (30 * product_params[:pao].to_f)
-    end
+    # parameters that have empty string as their values, get
+    # their key remove durign the execution of Product.new
+    # therefore, date will have the value of nill once Product.new gets executed
     product = Product.new(product_params)
+    if product.date.nil? && !product.pao.nil? && product.pao != ""
+      product.date = Date.today + (30 * product.pao.to_f)
+    end
 
    if product.save
      render json: product.as_json(only: [:id]), status: :ok
