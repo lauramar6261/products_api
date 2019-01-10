@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ProducTest < ActiveSupport::TestCase
+class ProductsTest < ActiveSupport::TestCase
     let (:product) {products(:one)}
     let (:producttwo) {products(:two)}
 
@@ -23,4 +23,22 @@ class ProducTest < ActiveSupport::TestCase
         product.errors.messages.must_include :image
       end
     end
+
+    describe "overdue" do
+    it "returns all overdue products" do
+      productoverdue = Product.find_by(id: 3)
+      productoverdue.date.must_be :<, Date.today
+
+      overdue = Product.overdue
+      overdue.length.must_equal 1
+      overdue.first.must_equal productoverdue
+    end
+
+    it "returns an empty array if no products are overdue" do
+      r = Product.first
+      r.date = Date.today
+      r.save!
+      Product.overdue.length.must_equal 0
+    end
+  end
 end

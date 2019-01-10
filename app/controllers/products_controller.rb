@@ -20,8 +20,9 @@ class ProductsController < ApplicationController
 
   def create
     # parameters that have empty string as their values, get
-    # their key remove durign the execution of Product.new
-    # therefore, date will have the value of nill once Product.new gets executed
+    # their key removed durign the execution of Product.new
+    # Once Product.new is done executing, it adds all the keys from the model
+    # and it sets the values of nil for the ones that were missing or had an empty string
     product = Product.new(product_params)
     if product.date.nil? && !product.pao.nil? && product.pao != ""
       product.date = Date.today + (30 * product.pao.to_f)
@@ -32,9 +33,6 @@ class ProductsController < ApplicationController
    else
      render json: {ok: false, message: product.errors.messages}, status: :bad_request
    end
-  end
-
-  def edit
   end
 
   def update
