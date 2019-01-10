@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  # GET /products/:id
   def show
     product = Product.find_by(id: params[:id])
 
@@ -9,6 +10,7 @@ class ProductsController < ApplicationController
     end
   end
 
+   # GET /products
   def index
     products = Product.all
     if products.nil?
@@ -18,6 +20,7 @@ class ProductsController < ApplicationController
     end
   end
 
+  # POST /products
   def create
     # parameters that have empty string as their values, get
     # their key removed durign the execution of Product.new
@@ -35,6 +38,7 @@ class ProductsController < ApplicationController
    end
   end
 
+  # PUT /products/:id
   def update
     product = Product.find(params[:id])
     if product.update!(product_params)
@@ -44,9 +48,17 @@ class ProductsController < ApplicationController
     end
   end
 
+  # DELETE /products/:id
   def destroy
+    product = Product.find(params[:id])
+    if product.destroy!
+      render json: product.as_json(only: [:id]), status: :ok
+    else
+      render json: {ok: false, message: 'product not found'}, status: :not_found
+    end
   end
 
+  # GET /products/overdue
   def overdue
     products = Product.overdue.map do |product|
       {
