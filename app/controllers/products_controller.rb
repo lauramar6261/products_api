@@ -36,6 +36,12 @@ class ProductsController < ApplicationController
   end
 
   def update
+    product = Product.find(params[:id])
+    if product.update!(product_params)
+      render json: product.as_json(only: [:id, :upc, :name, :image, :date, :notes, :description, :color, :brand]), status: :ok
+    else
+      render json: {ok: false, message: 'product not found'}, status: :not_found
+    end
   end
 
   def destroy
