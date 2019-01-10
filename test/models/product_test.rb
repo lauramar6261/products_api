@@ -26,7 +26,7 @@ class ProductsTest < ActiveSupport::TestCase
 
     describe "overdue" do
     it "returns all overdue products" do
-      productoverdue = Product.find_by(id: 3)
+      productoverdue = product
       productoverdue.date.must_be :<, Date.today
 
       overdue = Product.overdue
@@ -35,9 +35,8 @@ class ProductsTest < ActiveSupport::TestCase
     end
 
     it "returns an empty array if no products are overdue" do
-      r = Product.first
-      r.date = Date.today
-      r.save!
+      product.date = Date.today
+      product.save!
       Product.overdue.length.must_equal 0
     end
   end
