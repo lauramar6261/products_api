@@ -83,9 +83,9 @@ class ProductsController < ApplicationController
   end
 
   def set_product
-    @product = Product.find_by id: params[:id]
+    @product = Product.find_by(upc: params[:upc])
     unless @product
-      render status: :not_found, json: { errors: { id: ["No such product #{params[:id]}"] } }
+      render status: :not_found, json: { errors: { upc: ["No such product with upc #{params[:upc]}"] } }
     end
   end
 end
