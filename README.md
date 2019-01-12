@@ -15,9 +15,11 @@ List all movies in the products library
 
 
 ```
-GET /movies/:id SHOULD BE BY UPC?
+GET /movies/:title
 ```
 Show details for a single movie by `title`
+
+
 
 
 
