@@ -1,4 +1,4 @@
-# README - DRAFT
+# README
 
 # ProductsAPI
 This products API implementation keeps track of all products an user owns.
@@ -11,39 +11,44 @@ This API comes pre-packaged with most of the functionality that you will require
 ```
 GET /products
 ```
-List all movies in the products library
+List all products in the products library
 
 
 ```
-GET /movies/:title
+GET /products/:upc
 ```
-Show details for a single movie by `title`
+Show details for a single movie by UPC code
 
+```
+POST /products/
+```
+Add a new product
 
+```
+GET /products/overdue
+```
+List all the products that have expired
 
+```
+PUT /products/:upc
+```
+Update a product
 
+```
+DELTE /products/:upc
+```
+Delete a product
 
+#### Terminology
 
+UPC = The Universal Product Code is a barcode symbology that is widely used in the United States, Canada, United Kingdom, Australia, New Zealand, in Europe and other countries for tracking trade items in stores. UPC consists of 12 numeric digits that are uniquely assigned to each trade item.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Running tests
+| Command                    | Result                                              |
+| -------------------------- | --------------------------------------------------- |
+| rails test                 | Run all tests                                       |
+| rails test test/models     | Run tests in test/models                            |
 
-Things you may want to cover:
+#### Ruby version
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ruby 2.5.1p57
