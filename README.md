@@ -2,6 +2,7 @@
 
 # ProductsAPI
 This products API implementation keeps track of all products an user owns.
+It hosted at https://productsbarcode.herokuapp.com
 
 ## Functionality
 This API comes pre-packaged with most of the functionality that you will require. The following endpoints are implemented
@@ -19,25 +20,31 @@ GET /products/:upc
 ```
 Show details for a single movie by UPC code
 
+
 ```
 POST /products/
 ```
-Add a new product
+Add a new product.
+You must provide the following keys along its values: name, upc, image, and user_id
+
 
 ```
 GET /products/overdue
 ```
 List all the products that have expired
 
+
 ```
 PUT /products/:upc
 ```
 Update a product
 
+
 ```
 DELTE /products/:upc
 ```
 Delete a product
+
 
 ## Terminology
 
