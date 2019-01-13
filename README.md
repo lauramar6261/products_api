@@ -24,8 +24,8 @@ Show details for a single movie by UPC code
 ```
 POST /products/
 ```
-Add a new product
-You must provide the following keys: name, upc, image, and user_id
+Add a new product.
+You must provide the following keys along its values: name, upc, image, and user_id
 
 
 ```
