@@ -2,6 +2,7 @@
 
 # ProductsAPI
 This products API implementation keeps track of all products an user owns.
+It hosted at https://productsbarcode.herokuapp.com
 
 ## Functionality
 This API comes pre-packaged with most of the functionality that you will require. The following endpoints are implemented
