@@ -39,16 +39,16 @@ DELTE /products/:upc
 ```
 Delete a product
 
-#### Terminology
+## Terminology
 
 UPC = The Universal Product Code is a barcode symbology that is widely used in the United States, Canada, United Kingdom, Australia, New Zealand, in Europe and other countries for tracking trade items in stores. UPC consists of 12 numeric digits that are uniquely assigned to each trade item.
 
-#### Running tests
+## Running tests
 | Command                    | Result                                              |
 | -------------------------- | --------------------------------------------------- |
 | rails test                 | Run all tests                                       |
 | rails test test/models     | Run tests in test/models                            |
 
-#### Ruby version
+## Ruby version
 
 ruby 2.5.1p57
