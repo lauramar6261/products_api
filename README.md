@@ -20,25 +20,31 @@ GET /products/:upc
 ```
 Show details for a single movie by UPC code
 
+
 ```
 POST /products/
 ```
 Add a new product
+You must provide the following keys: name, upc, image, and user_id
+
 
 ```
 GET /products/overdue
 ```
 List all the products that have expired
 
+
 ```
 PUT /products/:upc
 ```
 Update a product
 
+
 ```
 DELTE /products/:upc
 ```
 Delete a product
+
 
 ## Terminology
 
