@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   # GET /products/:id
   def show
     if @product
-      render json: @product.as_json(only: [:id, :upc, :name, :image, :date, :notes, :description, :color, :brand]), status: :ok
+      render json: @product.as_json(only: [:id, :upc, :name, :image, :date, :notes, :description, :color, :brand, :pao]), status: :ok
     else
       render json: {ok: false, message: 'product not found'}, status: :not_found
     end
