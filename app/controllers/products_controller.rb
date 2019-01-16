@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
 
    # GET /products
   def index
-    products = Product.all
+    products = Product.all.sort_by{|product| product.date}
     if products.nil?
       render json: {ok:false, message: 'not_found'}, status: :not_found
     else
