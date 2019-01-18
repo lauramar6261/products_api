@@ -9,6 +9,6 @@ class Product < ApplicationRecord
 
   def expiration_date_cannot_be_in_the_past
     errors.add("expiration date must be in the future") if
-      !date.blank? and expiration_date <= Date.today
+      !date.blank? and date <= Date.today
   end
 end
