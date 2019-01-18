@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
    if product.save
      render json: product.as_json(only: [:id]), status: :ok
    else
-     render json: {ok: false, message: product.errors.messages}, status: :bad_request
+     render json: {ok: false, message: product.errors.full_messages}, status: :bad_request
    end
   end
 
