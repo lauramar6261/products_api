@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
     end
 
    if product.save
-     render json: product.as_json(only: [:id]), status: :ok
+     render json: product.as_json(only: [:id, :date]), status: :ok
    else
      render json: {ok: false, message: product.errors.full_messages}, status: :bad_request
    end
